@@ -17,10 +17,13 @@ Thumbs.db
 # SASS
 .sass-cache/
 *.css.map
+# Allow main.css for deployment
+!styles/main.css
 
 # Dependencies (if using npm for SASS compilation)
 node_modules/
-package-lock.json
+# Keep package-lock.json for CI/CD
+# package-lock.json
 yarn.lock
 
 # Build outputs

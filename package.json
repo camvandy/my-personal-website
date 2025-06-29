@@ -6,7 +6,13 @@
   "scripts": {
     "sass": "sass styles/main.scss styles/main.css",
     "sass:watch": "sass --watch styles/main.scss:styles/main.css",
-    "build": "sass styles/main.scss styles/main.css --style=compressed"
+    "build": "sass styles/main.scss styles/main.css --style=compressed",
+    "dev": "npm run sass:watch & python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "preview": "npm run build && npm run serve",
+    "lint:css": "stylelint styles/**/*.scss",
+    "format": "prettier --write .",
+    "clean": "rm -rf styles/main.css styles/main.css.map"
   },
   "keywords": [
     "portfolio",
@@ -19,6 +25,11 @@
   "author": "Cam Vandy",
   "license": "MIT",
   "devDependencies": {
-    "sass": "^1.69.0"
+    "sass": "^1.69.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "prettier": "^3.0.0",
+    "html-validate": "^8.0.0",
+    "eslint": "^8.0.0"
   }
 }

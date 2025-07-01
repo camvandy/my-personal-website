@@ -32,23 +32,23 @@ npm run serve       # Start local server
 
 1. **Install dependencies:**
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 2. **Start development:**
 
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
-   This starts SASS watching and a local server at `http://localhost:8000`
+    This starts SASS watching and a local server at `http://localhost:8000`
 
 3. **Build for production:**
 
-   ```bash
-   npm run build
-   ```
+    ```bash
+    npm run build
+    ```
 
 ## VS Code Integration
 
@@ -58,6 +58,7 @@ This project includes VS Code tasks for common development actions:
 - Select from: "SASS: Watch", "Build Production", "Start Dev Server", etc.
 
 Available tasks:
+
 - **SASS: Watch** - Watch and compile SASS files automatically
 - **Build Production** - Build optimized CSS for production
 - **Start Dev Server** - Start local development server

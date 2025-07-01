@@ -20,5 +20,3 @@ For detailed development workflow, setup instructions, and deployment informatio
 npm install
 npm run dev
 ```
-
-This will install dependencies and start the development environment with SASS watching and a local server.

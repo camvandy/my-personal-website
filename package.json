@@ -1,58 +1,52 @@
 {
   "name": "personal-portfolio",
   "version": "1.0.0",
-  "description": "A futuristic personal portfolio built with HTML, CSS, JavaScript, and SASS",
-  "main": "index.html",
+  "description": "A futuristic personal portfolio built with React, JavaScript, and CSS",
+  "main": "src/index.js",
+  "homepage": ".",
   "scripts": {
-    "sass": "sass src/styles/main.scss src/styles/main.css",
-    "sass:watch": "sass --watch src/styles/main.scss:src/styles/main.css",
-    "build": "npm-run-all build:*",
-    "build:sass": "sass src/styles/main.scss src/styles/main.css --style=compressed",
-    "build:autoprefixer": "postcss src/styles/main.css --config config/build/postcss.config.js --use autoprefixer -o src/styles/main.css",
-    "build:purge": "purgecss --css src/styles/main.css --content index.html 404.html --output src/styles/",
-    "prepare": "npm run build",
-    "dev": "concurrently \"npm run sass:watch\" \"npm run serve\"",
-    "dev:sync": "concurrently \"npm run sass:watch\" \"npm run serve:browser-sync\"",
-    "serve": "python3 -m http.server 3000",
-    "serve:8000": "python3 -m http.server 8000",
-    "serve:4000": "python3 -m http.server 4000",
-    "serve:browser-sync": "browser-sync start --server --files \"*.html, src/styles/*.css, src/scripts/*.js\" --port 3001",
-    "kill-port": "lsof -ti:8000 | xargs kill -9 2>/dev/null || true",
-    "preview": "npm run build && npm run serve",
-    "lint": "npm-run-all lint:*",
-    "lint:css": "stylelint --config config/linting/.stylelintrc.json src/styles/**/*.scss",
-    "lint:html": "html-validate --config config/linting/.htmlvalidate.json *.html",
-    "lint:js": "ESLINT_USE_FLAT_CONFIG=false eslint --config config/linting/.eslintrc.json src/scripts/**/*.js",
-    "format": "prettier --config config/linting/.prettierrc.json --write .",
-    "clean": "rm -rf src/styles/main.css src/styles/main.css.map",
-    "validate": "npm-run-all lint build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx",
+    "lint:fix": "eslint src --ext .js,.jsx --fix",
+    "format": "prettier --write src/**/*.{js,jsx,css}",
+    "preview": "npm run build && serve -s build"
   },
   "keywords": [
     "portfolio",
-    "html",
+    "react",
     "css",
     "javascript",
-    "sass",
     "futuristic"
   ],
   "author": "Cam Vandy",
   "license": "MIT",
-  "devDependencies": {
-    "sass": "^1.77.0",
-    "stylelint": "^16.6.0",
-    "stylelint-config-standard-scss": "^13.1.0",
-    "prettier": "^3.3.0",
-    "html-validate": "^8.20.0",
-    "eslint": "^9.5.0",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0",
-    "browser-sync": "^3.0.2",
-    "concurrently": "^8.2.2",
-    "npm-run-all": "^4.1.5",
-    "purgecss": "^6.0.0"
-  },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-scripts": "5.0.1",
+    "react-icons": "5.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.30.1",
+    "eslint": "9.30.1",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "prettier": "3.6.2",
+    "serve": "14.2.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

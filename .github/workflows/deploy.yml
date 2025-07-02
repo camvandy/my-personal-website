@@ -1,156 +1,146 @@
-name: Build and Deploy to GitHub Pages
+name: Build and Deploy React App to GitHub Pages
 
 on:
-    push:
-        branches: [main, master]
-    pull_request:
-        branches: [main, master]
-    # Allow manual triggering
-    workflow_dispatch:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  # Allow manual triggering
+  workflow_dispatch:
 
 # Prevent concurrent deployments
 concurrency:
-    group: 'pages'
-    cancel-in-progress: false
+  group: "pages"
+  cancel-in-progress: false
 
 # Add permissions for GitHub Pages deployment
 permissions:
-    contents: read
-    pages: write
-    id-token: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-    # Build job
-    build:
-        runs-on: ubuntu-latest
+  # Build job
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '22' # Latest LTS
-                  cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18" # React requires Node 16+
+          cache: "npm"
 
-            - name: Install dependencies
-              run: |
-                  if [ -f package-lock.json ]; then
-                    npm ci --prefer-offline --no-audit --progress=false
-                  else
-                    npm install --prefer-offline --no-audit --progress=false
-                  fi
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --prefer-offline --no-audit --progress=false
+          else
+            npm install --prefer-offline --no-audit --progress=false
+          fi
 
-            - name: Cache SASS build
-              uses: actions/cache@v4
-              with:
-                  path: styles/main.css
-                  key: sass-${{ hashFiles('styles/main.scss') }}
-                  restore-keys: |
-                      sass-
+      - name: Run quality checks
+        run: |
+          # Lint code
+          npm run lint || echo "Linting completed with warnings"
 
-            - name: Build SASS
-              run: npm run build
+          # Run tests
+          npm test -- --coverage --watchAll=false || echo "Tests completed"
 
-            - name: Run quality checks
-              run: |
-                  # Check if build was successful
-                  if [ ! -f "styles/main.css" ]; then
-                    echo "Error: CSS build failed"
-                    exit 1
-                  fi
+      - name: Build React app
+        run: npm run build
+        env:
+          CI: false # Treat warnings as warnings, not errors
 
-                  # Run CSS linting
-                  npm run lint:css || echo "CSS linting skipped"
+      - name: Verify build
+        run: |
+          # Check if build was successful
+          if [ ! -d "build" ]; then
+            echo "Error: React build failed"
+            exit 1
+          fi
 
-                  # Check HTML validation (if html-validate is configured)
-                  npx html-validate index.html || echo "HTML validation skipped"
+          echo "Build artifacts:"
+          ls -la build/
 
-                  # Check file sizes
-                  echo "Build artifacts:"
-                  ls -la styles/main.css
+          echo "Build completed successfully!"
 
-                  echo "Build completed successfully!"
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-build
+          path: build/
+          retention-days: 1
 
-            - name: Upload build artifacts
-              uses: actions/upload-artifact@v4
-              with:
-                  name: built-site
-                  path: |
-                      index.html
-                      styles/
-                      scripts/
-                      !styles/*.scss
-                      !styles/*.map
-                  retention-days: 1
+  # Deploy job
+  deploy:
+    # Only run on main/master branch pushes
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
 
-    # Deploy job
-    deploy:
-        # Only run on main/master branch pushes
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    needs: build
+    runs-on: ubuntu-latest
 
-        needs: build
-        runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
 
-        permissions:
-            contents: read
-            pages: write
-            id-token: write
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: react-build
+          path: ./
 
-        steps:
-            - name: Download build artifacts
-              uses: actions/download-artifact@v4
-              with:
-                  name: built-site
-                  path: ./
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-            - name: Setup Pages
-              uses: actions/configure-pages@v4
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./
 
-            - name: Upload to GitHub Pages
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  path: ./
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+      - name: Performance Check
+        if: success()
+        run: |
+          echo "🚀 Deployment successful!"
+          echo "Site URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "Build size check:"
+          du -sh ./ || true
 
-            - name: Performance Check
-              if: success()
-              run: |
-                  echo "🚀 Deployment successful!"
-                  echo "Site URL: ${{ steps.deployment.outputs.page_url }}"
-                  echo "Build size check:"
-                  du -sh ./ || true
+  # Security and Performance Audit
+  audit:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true # Don't fail the workflow if audit fails
 
-    # Security and Performance Audit
-    audit:
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-        needs: deploy
-        runs-on: ubuntu-latest
-        continue-on-error: true # Don't fail the workflow if audit fails
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '22'
+      - name: Security Audit
+        run: |
+          echo "🔒 Running security audit..."
+          npm audit --audit-level=moderate || echo "Security audit completed with warnings"
 
-            - name: Security Audit
-              run: |
-                  echo "🔒 Running security audit..."
-                  npm audit --audit-level=moderate || echo "Security audit completed with warnings"
-
-            - name: Check for outdated packages
-              run: |
-                  echo "📦 Checking for outdated packages..."
-                  npm outdated || echo "Package check completed"
+      - name: Check for outdated packages
+        run: |
+          echo "📦 Checking for outdated packages..."
+          npm outdated || echo "Package check completed"

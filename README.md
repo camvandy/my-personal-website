@@ -2,21 +2,33 @@
 
 Link: <https://cam-vandy.vercel.app/>
 
-My personal portfolio created as a simple example of a website with a futuristic feel using very basic languages. This project demonstrates my advanced understanding of fundamental web technologies, built in just a couple of days to showcase clean, modern web development practices.
+My personal portfolio created as a modern React application with a futuristic feel. This project demonstrates my advanced understanding of modern web technologies, showcasing clean React development practices.
 
 ## Stack
 
-- **Languages** - HTML, CSS, JavaScript
-- **Preprocessor** - SASS
-- **Hosting** - GitHub Pages / Vercel
+- **Frontend** - React, JavaScript, CSS
+- **Build Tool** - Create React App
+- **Icons** - React Icons
+- **Hosting** - Vercel
 
 ## Getting Started
-
-For detailed development workflow, setup instructions, and deployment information, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 **Quick Start:**
 
 ```bash
 npm install
-npm run dev
+npm start
+```
+
+**Build for production:**
+
+```bash
+npm run build
+```
+
+**Lint and format:**
+
+```bash
+npm run lint:fix
+npm run format
 ```

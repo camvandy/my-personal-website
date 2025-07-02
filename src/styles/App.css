@@ -22,36 +22,46 @@ body {
   0% {
     opacity: 0.3;
   }
+
   100% {
     opacity: 0.8;
   }
 }
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes glow {
   from {
     box-shadow: 0 0 5px rgba(0, 245, 255, 0.5);
   }
+
   to {
     box-shadow: 0 0 20px rgba(0, 245, 255, 0.8);
   }
 }
+
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
+
 .float-animation {
   animation: float 3s ease-in-out infinite;
 }
@@ -67,11 +77,13 @@ body {
   right: 0;
   z-index: 1000;
 }
+
 .header .nav {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
+
 .header .nav__brand h1 {
   color: #00f5ff;
   font-size: 1.8rem;
@@ -91,6 +103,7 @@ body {
   text-align: center;
   position: relative;
 }
+
 .hero::before {
   content: "";
   position: absolute;
@@ -99,6 +112,7 @@ body {
   animation: pulse 4s ease-in-out infinite alternate;
   z-index: -1;
 }
+
 .hero__title {
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 1rem;
@@ -110,10 +124,12 @@ body {
   text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
   cursor: default;
 }
+
 .hero__title:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease;
 }
+
 .hero__subtitle {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   color: #ccc;
@@ -121,6 +137,7 @@ body {
   opacity: 0;
   animation: fadeInUp 1s ease 0.5s forwards;
 }
+
 .hero__description {
   font-size: clamp(1rem, 2.5vw, 1.1rem);
   color: #ccc;
@@ -136,6 +153,7 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 4rem;
 }
+
 .footer .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -144,37 +162,43 @@ body {
   font-size: 0.9rem;
 }
 
-@media (width <= 768px) {
+@media (width <=768px) {
   .hero {
     padding: 2rem 0;
   }
+
   .hero__title {
     font-size: 2rem;
   }
+
   .hero__subtitle {
     font-size: 1.2rem;
   }
+
   .hero__description {
     font-size: 1rem;
   }
+
   .header .nav__brand h1 {
     font-size: 1.5rem;
   }
 }
+
 @media print {
+
   .header,
   .footer {
     display: none;
   }
+
   body {
     background: white;
     color: black;
   }
+
   .hero__title {
     color: black !important;
     background: none !important;
     -webkit-text-fill-color: black !important;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

@@ -1,60 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta
-            name="description"
-            content="Personal portfolio showcasing advanced understanding of fundamental web technologies"
-        >
-        <title>Cam Vandy - Personal Portfolio</title>
+<!DOCTYPE HTML>
+<!--
 
-        <!-- PWA Manifest -->
-        <link rel="manifest" href="/public/manifest.json">
+-->
+<html>
 
-        <!-- Favicon and icons -->
-        <link rel="icon" type="image/x-icon" href="/favicon.ico">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<head>
+	<title>Cameron Vandermeersch</title>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="src/styles/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="src/styles/noscript.css" />
+	</noscript>
+</head>
 
-        <!-- Windows tiles -->
-        <meta name="msapplication-config" content="/public/browserconfig.xml">
-        <meta name="msapplication-TileColor" content="#00d4ff">
+<body class="is-preload">
 
-        <!-- Theme color for mobile browsers -->
-        <meta name="theme-color" content="#00d4ff">
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-        <link rel="stylesheet" href="src/styles/main.css">
-    </head>
-    <body>
-        <header class="header">
-            <nav class="nav">
-                <div class="nav__brand">
-                    <h1>Cam Vandy</h1>
-                </div>
-            </nav>
-        </header>
+		<!-- Header -->
+		<header id="header" class="alt">
+			<span class="logo"><img src="src/assets/images/logo.png" alt="" /></span>
+			<h1>Cameron Vandermeersch</h1>
+			<p>Hi! I'm a passionate web developer showcasing advanced understanding of fundamental web technologies.<br />
+				Built by <a href="https://github.com/camvandy" target="_blank">@camvandy</a></p>
+		</header>
 
-        <main class="main">
-            <section class="hero">
-                <div class="container">
-                    <h2 class="hero__title">Welcome to My Portfolio</h2>
-                    <p class="hero__subtitle">
-                        A futuristic showcase of fundamental web technologies
-                    </p>
-                    <p class="hero__description">
-                        Built in just a couple of days to demonstrate advanced understanding of
-                        HTML, CSS, JavaScript, and SASS
-                    </p>
-                </div>
-            </section>
-        </main>
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="#intro" class="active">Introduction</a></li>
+				<li><a href="#first">Experience</a></li>
+				<li><a href="#second">Projects</a></li>
+				<li><a href="#third">Skills</a></li>
+			</ul>
+		</nav>
 
-        <footer class="footer">
-            <div class="wrapper">
-                © <span id="current-year"></span> Cam Vandy. All Rights Reserved.
-            </div>
-        </footer>
+		<!-- Main -->
+		<div id="main">
 
-        <script src="src/scripts/main.js"></script>
-    </body>
+			<!-- Introduction -->
+			<section id="intro" class="main">
+				<div class="spotlight">
+					<div class="content">
+						<header class="major">
+							<h2>Introduction</h2>
+						</header>
+						<p>
+							I'm a web developer with a passion for creating modern, responsive, and user-friendly websites.
+							I have extensive experience with HTML, CSS, JavaScript, and SASS.
+							</br></br>
+							I have a strong interest in cutting-edge web technologies and front-end development, particularly
+							in creating clean, efficient, and maintainable code. I enjoy working on projects that challenge
+							my technical skills and allow me to learn new technologies and frameworks.
+						</p>
+					</div>
+					<span class="image"><img src="src/assets/images/headshot.jpg" alt="" /></span>
+				</div>
+			</section>
+
+			<!-- First Section -->
+			<section id="first" class="main special">
+				<header class="major">
+					<h2>Web Development Experience</h2>
+				</header>
+				<ul class="features">
+					<li>
+						<span class="icon solid major style1 fa-code"></span>
+						<h3>Frontend Development<br></h3>
+						<p>
+							Specialized in creating responsive, modern web interfaces using HTML5, CSS3, 
+							JavaScript, and SASS with a focus on performance and user experience
+						</p>
+					</li>
+					<li>
+						<span class="icon solid major style3 fa-laptop"></span>
+						<h3>Responsive Design</h3>
+						<p>
+							Expert in creating mobile-first, responsive designs that work seamlessly 
+							across all devices and screen sizes using modern CSS techniques
+						</p>
+					</li>
+					<li>
+						<span class="icon major style5 fa-copy"></span>
+						<h3>Modern Web Technologies</h3>
+						<p>
+							Proficient in modern web development tools and frameworks including 
+							build tools, version control, and deployment strategies
+						</p>
+					</li>
+				</ul>
+			</section>
+
+			<!-- Second Section -->
+			<section id="second" class="main special">
+				<header class="major">
+					<h2>Projects</h2>
+				</header>
+				<div class="spotlight">
+					<div class="content">
+						<h3><a href="#" target="_blank">Personal Portfolio Website</a></h3>
+						<ul>
+							<li>
+								Developed a modern, responsive portfolio website using HTML5, CSS3, and JavaScript
+							</li>
+							<li>
+								Implemented advanced SASS features including mixins, variables, and modular architecture
+							</li>
+							<li>
+								Created a mobile-first design approach with smooth animations and transitions
+							</li>
+							<li>
+								Optimized for performance and accessibility with clean, semantic markup
+							</li>
+						</ul>
+					</div>
+					<span class="image"><img src="src/assets/images/portfolio.png" alt="" /></span>
+				</div>
+
+				<div class="spotlight">
+					<div class="content">
+						<h3>Responsive Web Components</h3>
+						<p>
+							Designed and implemented reusable web components using modern CSS Grid and Flexbox
+							layouts, ensuring cross-browser compatibility and optimal performance across all devices
+						</p>
+					</div>
+					<span class="image"><img src="src/assets/images/components.png" alt="" /></span>
+				</div>
+
+				<div class="spotlight">
+					<div class="content">
+						<h3>CSS Framework Development</h3>
+						<ul>
+							<li>
+								Built custom CSS framework with modular SASS architecture for rapid development
+							</li>
+							<li>
+								Implemented utility classes and component-based styling system
+							</li>
+							<li>
+								Created comprehensive documentation and usage examples
+							</li>
+						</ul>
+					</div>
+					<span class="image"><img src="src/assets/images/css_framework.png" alt="" /></span>
+				</div>
+
+				<div class="spotlight">
+					<div class="content">
+						<h3>JavaScript Interactive Features</h3>
+						<p>This project focused on creating engaging user interactions using vanilla JavaScript,
+							including dynamic content loading, smooth scrolling navigation, form validation,
+							and responsive menu systems that enhance the overall user experience.
+						</p>
+					</div>
+					<span class="image"><img src="src/assets/images/javascript.png" alt="" /></span>
+				</div>
+
+				<div class="spotlight">
+					<div class="content">
+						<h3>Build Tool Configuration</h3>
+						<p>
+							Configured advanced build processes using modern tools for SASS compilation,
+							CSS optimization, JavaScript bundling, and automated deployment workflows
+							to streamline the development process.
+						</p>
+					</div>
+					<span class="image"><img src="src/assets/images/build_tools.png" alt="" /></span>
+				</div>
+
+			</section>
+
+
+			<!-- Third Section -->
+			<section id="third" class="main special">
+				<header class="major">
+					<h2>Skills</h2>
+				</header>
+				<ul class="statistics">
+					<li class="style1">
+						<span class="icon solid fa-code-branch"></span>
+						<strong>HTML5</strong>
+					</li>
+					<li class="style2">
+						<span class="icon fa-folder-open"></span>
+						<strong>CSS3</strong>
+					</li>
+					<li class="style3">
+						<span class="icon solid fa-signal"></span>
+						<strong>JavaScript</strong>
+					</li>
+					<li class="style4">
+						<span class="icon solid fa-laptop"></span>
+						<strong>SASS</strong>
+					</li>
+					<li class="style5">
+						<span class="icon fa-gem"></span>
+						<strong>Responsive Design</strong>
+					</li>
+				</ul>
+				<p class="content">
+					I'm proficient in HTML5 and CSS3, expert in JavaScript and SASS, and have extensive experience creating responsive,
+					modern web applications. I specialize in semantic markup, CSS Grid and Flexbox layouts, and advanced SASS features.
+					</br>
+					</br>
+					Using modern web technologies, I create <a href="#" target="_blank">responsive websites</a> that provide
+					excellent user experiences across all devices. I use SASS to create maintainable, scalable stylesheets
+					with advanced features like mixins and functions. In JavaScript, I focus on creating interactive features
+					that enhance user engagement while maintaining performance. I'm also experienced with build tools,
+					version control systems, and modern development workflows.
+				</p>
+			</section>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>A Bit About Me</h2>
+				<p>I'm passionate about web development and creating digital experiences that matter. When I'm not coding,
+					I enjoy exploring new technologies, contributing to open-source projects, and staying up-to-date with
+					the latest web development trends. I believe in writing clean, maintainable code and creating websites
+					that are both beautiful and functional.
+				</p>
+			</section>
+			<section>
+				<h2>Contact Information</h2>
+				<dl class="alt">
+					<dt>Email</dt>
+					<dd><a href="mailto: Cameroon.Vandermeersch@gmail.com">Cameroon.Vandermeersch@gmail.com</a></dd>
+				</dl>
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/cameronvandermeersch/" class="icon brands fa-linkedin alt"
+							target="_blank"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/camvandy" class="icon brands fa-github alt" target="_blank"><span
+								class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="src/scripts/jquery.min.js"></script>
+	<script src="src/scripts/jquery.scrollex.min.js"></script>
+	<script src="src/scripts/jquery.scrolly.min.js"></script>
+	<script src="src/scripts/browser.min.js"></script>
+	<script src="src/scripts/breakpoints.min.js"></script>
+	<script src="src/scripts/util.js"></script>
+	<script src="src/scripts/main.js"></script>
+
+</body>
+
 </html>

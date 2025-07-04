@@ -276,7 +276,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 16.36rem 0 6.29rem 0;
-  /* background-image: url("../assets/images/banner-bg.png"); */
+  background-image: url("../assets/images/banner-background.png");
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -294,6 +294,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 20px;
   margin-bottom: 16px;
   display: inline-block;
+  color: #fff;
 }
 
 .banner h1 {
@@ -303,6 +304,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   line-height: 1;
   margin-bottom: 20px;
   display: block;
+  color: #fff;
+}
+
+.banner h2 {
+  font-size: 55px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
 .banner p {
@@ -354,6 +365,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .txt-rotate>.wrap {
   border-right: 0.08em solid #666;
+  color: #fff;
+}
+
+.banner .txt-rotate {
+  color: #fff;
+}
+
+.banner .wrap {
+  color: #fff;
 }
 
 /************ Skills Css ************/
@@ -684,7 +704,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Footer Css ************/
 .footer {
   padding: 0 0 3rem 0;
-  /* background-image: url("../assets/images/footer-bg.png"); */
+  background-image: url("../assets/images/footer-background.png");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

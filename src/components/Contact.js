@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import emailjs from "@emailjs/browser";
+import contactImg from "../assets/images/contactImg.svg";
 
 export const Contact = () => {
     const formInitialDetails = {
@@ -22,16 +24,71 @@ export const Contact = () => {
         })
     }
 
+    const validateForm = () => {
+        const { firstName, lastName, email, message } = formDetails;
+
+        if (!firstName.trim() || !lastName.trim() || !email.trim() || !message.trim()) {
+            setStatus({
+                success: false,
+                message: 'Please fill in all required fields.'
+            });
+            return false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setStatus({
+                success: false,
+                message: 'Please enter a valid email address.'
+            });
+            return false;
+        }
+
+        return true;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Clear any previous status messages
+        setStatus({});
+
+        // Validate form before submitting
+        if (!validateForm()) {
+            return;
+        }
+
         setButtonText("Sending...");
-        // Add your form submission logic here
-        // For now, we'll just simulate a successful submission
-        setTimeout(() => {
-            setButtonText("Send");
+
+        // Initialize EmailJS with your public key
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+
+        try {
+            await emailjs.send(
+                "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+                "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+                {
+                    firstName: formDetails.firstName,
+                    lastName: formDetails.lastName,
+                    email: formDetails.email,
+                    phone: formDetails.phone,
+                    message: formDetails.message
+                }
+            );
+
+            setStatus({
+                success: true,
+                message: 'Message sent successfully! I\'ll get back to you soon.'
+            });
             setFormDetails(formInitialDetails);
-            setStatus({ success: true, message: 'Message sent successfully' });
-        }, 2000);
+        } catch (error) {
+            setStatus({
+                success: false,
+                message: 'Something went wrong, please try again later.'
+            });
+        } finally {
+            setButtonText("Send");
+        }
     };
 
     return (
@@ -42,8 +99,7 @@ export const Contact = () => {
                         <TrackVisibility>
                             {({ isVisible }) =>
                                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                                    <h3>Let&apos;s work together!</h3>
-                                    <p>I&apos;m always interested in hearing about new opportunities and projects.</p>
+                                    <img src={contactImg} alt="Contact us" />
                                 </div>
                             }
                         </TrackVisibility>
@@ -56,25 +112,58 @@ export const Contact = () => {
                                     <form onSubmit={handleSubmit}>
                                         <Row>
                                             <Col size={12} sm={6} className="px-1">
-                                                <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
+                                                <input
+                                                    type="text"
+                                                    value={formDetails.firstName}
+                                                    placeholder="First Name"
+                                                    onChange={(e) => onFormUpdate('firstName', e.target.value)}
+                                                    required
+                                                />
                                             </Col>
                                             <Col size={12} sm={6} className="px-1">
-                                                <input type="text" value={formDetails.lastName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)} />
+                                                <input
+                                                    type="text"
+                                                    value={formDetails.lastName}
+                                                    placeholder="Last Name"
+                                                    onChange={(e) => onFormUpdate('lastName', e.target.value)}
+                                                    required
+                                                />
                                             </Col>
                                             <Col size={12} sm={6} className="px-1">
-                                                <input type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
+                                                <input
+                                                    type="email"
+                                                    value={formDetails.email}
+                                                    placeholder="Email Address"
+                                                    onChange={(e) => onFormUpdate('email', e.target.value)}
+                                                    required
+                                                />
                                             </Col>
                                             <Col size={12} sm={6} className="px-1">
-                                                <input type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)} />
+                                                <input
+                                                    type="tel"
+                                                    value={formDetails.phone}
+                                                    placeholder="Phone No."
+                                                    onChange={(e) => onFormUpdate('phone', e.target.value)}
+                                                />
                                             </Col>
                                             <Col size={12} className="px-1">
-                                                <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                                                <button type="submit"><span>{buttonText}</span></button>
+                                                <textarea
+                                                    rows="6"
+                                                    value={formDetails.message}
+                                                    placeholder="Message"
+                                                    onChange={(e) => onFormUpdate('message', e.target.value)}
+                                                    required
+                                                ></textarea>
+                                                <button type="submit" disabled={buttonText === "Sending..."}>
+                                                    <span>{buttonText}</span>
+                                                </button>
                                             </Col>
                                             {
                                                 status.message &&
-                                                <Col>
-                                                    <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
+                                                <Col size={12} className="px-1">
+                                                    <Alert variant={status.success ? "success" : "danger"} className="mt-3">
+                                                        {status.message}
+                                                    </Alert>
                                                 </Col>
                                             }
                                         </Row>

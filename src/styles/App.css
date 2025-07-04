@@ -1,3 +1,4 @@
+/************ Custom Font ************/
 @font-face {
   font-family: Centra;
   src: url("../assets/fonts/CentraNo2-Bold.ttf");
@@ -16,7 +17,7 @@
   font-weight: 400;
 }
 
-/************ Default CSS ************/
+/************ Default Css ************/
 * {
   margin: 0;
   padding: 0;
@@ -32,9 +33,9 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
-  background-color: #121212;
-  color: #fff;
-  font-family: "Centra", sans-serif;
+  background-color: #121212 !important;
+  color: #fff !important;
+  font-family: "Centra", sans-serif !important;
 }
 
 h1,
@@ -120,7 +121,7 @@ nav.navbar a.navbar-brand img {
 
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
-  color: #fff;
+  color: #fff !important;
   letter-spacing: 0.8px;
   padding: 0 25px;
   font-size: 18px;
@@ -294,7 +295,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 20px;
   margin-bottom: 16px;
   display: inline-block;
-  color: #fff;
 }
 
 .banner h1 {
@@ -304,16 +304,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   line-height: 1;
   margin-bottom: 20px;
   display: block;
-  color: #fff;
-}
-
-.banner h2 {
-  font-size: 55px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  line-height: 1;
-  margin-bottom: 20px;
-  color: #fff;
 }
 
 .banner p {
@@ -365,15 +355,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .txt-rotate>.wrap {
   border-right: 0.08em solid #666;
-  color: #fff;
-}
-
-.banner .txt-rotate {
-  color: #fff;
-}
-
-.banner .wrap {
-  color: #fff;
 }
 
 /************ Skills Css ************/

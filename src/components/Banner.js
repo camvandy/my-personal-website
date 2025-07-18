@@ -61,7 +61,8 @@ export const Banner = () => {
                                             <span className="wrap">{text}</span>
                                         </span>
                                     </h2>
-                                    <p>Hi! I&apos;m a passionate web developer showcasing advanced understanding of fundamental web technologies. I specialize in creating modern, responsive web applications using React, JavaScript, and CSS.</p>
+                                    <p>I&apos;m a Software Engineer with extensive background in web development, AI, and automation technologies. I specialize in creating robust, scalable applications that solve complex technical challenges and deliver measurable business impact.</p>
+                                    <p>Currently serving as a Network Automation Software Engineer at Enbridge Gas, where I build intelligent systems for modern infrastructure. As a Computer Science graduate from the University of Windsor, I leverage AI frameworks and cutting-edge technologies to drive operational efficiency across enterprise systems.</p>
                                     <button onClick={() => window.open(Pdf, "_blank", "noopener,noreferrer")}>Download CV <ArrowRightCircle size={25} /></button>
                                 </div>}
                         </TrackVisibility>

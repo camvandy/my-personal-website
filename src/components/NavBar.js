@@ -32,7 +32,7 @@ export const NavBar = () => {
         <Router>
             <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
                 <Container>
-                    <Navbar.Brand href="/">
+                    <Navbar.Brand as={HashLink} to="#home" onClick={() => onUpdateActiveLink('home')}>
                         <span className="logo">Cameron</span>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav">

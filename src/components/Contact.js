@@ -60,19 +60,20 @@ export const Contact = () => {
 
         setButtonText("Sending...");
 
-        // Initialize EmailJS with your public key
-        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        // Initialize EmailJS with your public key from environment variables
+        emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
 
         try {
             await emailjs.send(
-                "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-                "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+                process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
                 {
                     firstName: formDetails.firstName,
                     lastName: formDetails.lastName,
                     email: formDetails.email,
                     phone: formDetails.phone,
-                    message: formDetails.message
+                    message: formDetails.message,
+                    timestamp: new Date().toLocaleString()
                 }
             );
 

@@ -1,4 +1,5 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
+import { useState } from "react";
 import { ProjectCard } from "./ProjectCard";
 import AIEye from "../assets/images/AIEye.jpeg";
 import tttImage from "../assets/images/tttImage.jpeg";
@@ -15,6 +16,24 @@ import "animate.css";
 import TrackVisibility from "react-on-screen";
 
 export const Projects = () => {
+    const [activeTab, setActiveTab] = useState("first");
+
+    const handleTabSelect = (eventKey) => {
+        setActiveTab(eventKey);
+    };
+
+    const getTabClass = () => {
+        switch (activeTab) {
+            case "first":
+                return "tab-1";
+            case "second":
+                return "tab-2";
+            case "third":
+                return "tab-3";
+            default:
+                return "tab-1";
+        }
+    };
     const tab1 = [
         {
             title: "Personal Portfolio Website",
@@ -115,56 +134,86 @@ export const Projects = () => {
                                     }
                                 >
                                     <h2>Projects</h2>
-                                    <p>
-                                        Throughout my personal project history, I have strived for
-                                        educational enrichment to better my understanding of
-                                        computer science as well as the furtherment of science. To
-                                        achieve this purpose, I&apos;ve researched innovative approaches
-                                        to modern technology as seen below.
+                                    <p className="project-description">
+                                        Driven by a passion for innovation and continuous learning, I develop projects that
+                                        explore cutting-edge technologies and solve real-world challenges. Each project
+                                        represents a commitment to advancing both my technical expertise and contributing
+                                        meaningful solutions to the field of computer science.
                                     </p>
-                                    <Tab.Container id="projects-tabs" defaultActiveKey="first">
+                                    <Tab.Container
+                                        id="projects-tabs"
+                                        defaultActiveKey="first"
+                                        activeKey={activeTab}
+                                        onSelect={handleTabSelect}
+                                    >
                                         <Tab.Content
                                             id="slideInUp"
                                             className={
                                                 isVisible ? "animate__animated animate__slideInUp" : ""
                                             }
                                         >
-                                            <Tab.Pane eventKey="first">
+                                            <Tab.Pane eventKey="first" data-tab="first">
                                                 <Row>
-                                                    {tab1.map((tab1, index) => {
-                                                        return <ProjectCard key={index} {...tab1} />;
+                                                    {tab1.map((project, index) => {
+                                                        return <ProjectCard key={index} {...project} />;
                                                     })}
                                                 </Row>
                                             </Tab.Pane>
-                                            <Tab.Pane eventKey="second">
+                                            <Tab.Pane eventKey="second" data-tab="second">
                                                 <Row>
-                                                    {tab2.map((tab2, index) => {
-                                                        return <ProjectCard key={index} {...tab2} />;
+                                                    {tab2.map((project, index) => {
+                                                        return <ProjectCard key={index} {...project} />;
                                                     })}
                                                 </Row>
                                             </Tab.Pane>
-                                            <Tab.Pane eventKey="third">
+                                            <Tab.Pane eventKey="third" data-tab="third">
                                                 <Row>
-                                                    <p>
-                                                        In Progress! Exciting New Projects To Be Released
-                                                        Soon :)
-                                                    </p>
-                                                    {/* {
-                          tab3.map((tab3, index) => {
-                            return (
-                              <ProjectCard
-                                key={index}
-                                {...tab3}
-                                />
-                            )
-                          })
-                        } */}
+                                                    <Col xs={12}>
+                                                        <div className="coming-soon-container">
+                                                            <h3>Exciting Projects in Development</h3>
+                                                            <p>
+                                                                I&apos;m currently working on several innovative projects that will showcase
+                                                                cutting-edge technologies and creative solutions. Stay tuned for these
+                                                                upcoming releases!
+                                                            </p>
+                                                            <div className="coming-soon-features">
+                                                                <div className="feature-item">
+                                                                    <h4>
+                                                                        <span className="feature-icon">🚀</span>
+                                                                        Advanced AI Projects
+                                                                    </h4>
+                                                                    <p>Machine learning and AI-powered applications</p>
+                                                                </div>
+                                                                <div className="feature-item">
+                                                                    <h4>
+                                                                        <span className="feature-icon">⚡</span>
+                                                                        Modern Web Apps
+                                                                    </h4>
+                                                                    <p>Next-generation web technologies and frameworks</p>
+                                                                </div>
+                                                                <div className="feature-item">
+                                                                    <h4>
+                                                                        <span className="feature-icon">📱</span>
+                                                                        Mobile Solutions
+                                                                    </h4>
+                                                                    <p>Cross-platform mobile applications</p>
+                                                                </div>
+                                                                <div className="feature-item">
+                                                                    <h4>
+                                                                        <span className="feature-icon">☁️</span>
+                                                                        Cloud Infrastructure
+                                                                    </h4>
+                                                                    <p>Scalable cloud-native applications and microservices</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </Col>
                                                 </Row>
                                             </Tab.Pane>
                                         </Tab.Content>
                                         <Nav
                                             variant="pills"
-                                            className="nav-pills mb-5 justify-content-center align-items-center"
+                                            className={`nav-pills mb-5 justify-content-center align-items-center ${getTabClass()}`}
                                             id="pills-tab"
                                         >
                                             <Nav.Item>

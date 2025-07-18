@@ -5,8 +5,7 @@ export const ProjectCard = ({
     description,
     imgUrl,
     linkUrl,
-    technologies,
-    details
+    technologies
 }) => {
     const handleClick = () => {
         if (linkUrl) {

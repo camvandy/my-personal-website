@@ -24,7 +24,7 @@
     "react-dom": "^19.1.0",
     "react-helmet-async": "^2.0.5",
     "react-icons": "^5.5.0",
-    "react-multi-carousel": "^2.8.5",
+    "react-multi-carousel": "^2.8.6",
     "react-on-screen": "^2.1.1",
     "react-router-dom": "^7.13.0",
     "react-router-hash-link": "^2.4.3"

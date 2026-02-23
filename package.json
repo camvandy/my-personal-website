@@ -1,86 +1,46 @@
 {
   "name": "personal-portfolio",
-  "version": "1.0.0",
-  "description": "A futuristic personal portfolio built with React, JavaScript, and CSS",
-  "main": "src/index.js",
-  "homepage": ".",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint src --ext .js,.jsx",
-    "lint:fix": "eslint src --ext .js,.jsx --fix",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "preview": "npm run build && serve -s build"
-  },
-  "keywords": [
-    "portfolio",
-    "react",
-    "css",
-    "javascript",
-    "futuristic"
-  ],
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "A modern personal portfolio built with React, Vite, and CSS",
   "author": "Cam Vandy",
   "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx",
+    "lint:fix": "eslint src --ext .js,.jsx --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,json,css,md}'"
+  },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@testing-library/jest-dom": "6.6.3",
-    "@testing-library/react": "16.3.0",
-    "@testing-library/user-event": "14.6.1",
-    "animate.css": "4.1.1",
-    "bootstrap": "5.3.7",
-    "react": "19.1.0",
-    "react-bootstrap": "2.10.10",
-    "react-bootstrap-icons": "1.11.6",
-    "react-dom": "19.1.0",
-    "react-helmet": "6.1.0",
-    "react-icons": "5.5.0",
-    "react-mailchimp-subscribe": "^2.1.3",
-    "react-multi-carousel": "2.8.6",
-    "react-on-screen": "2.1.1",
-    "react-responsive-carousel": "3.2.23",
-    "react-router-dom": "6.30.0",
-    "react-router-hash-link": "2.4.3",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "5.0.3"
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.7",
+    "react": "^19.1.0",
+    "react-bootstrap": "^2.10.10",
+    "react-bootstrap-icons": "^1.11.6",
+    "react-dom": "^19.1.0",
+    "react-helmet-async": "^2.0.5",
+    "react-icons": "^5.5.0",
+    "react-multi-carousel": "^2.8.6",
+    "react-on-screen": "^2.1.1",
+    "react-router-dom": "^6.30.0",
+    "react-router-hash-link": "^2.4.3"
   },
   "devDependencies": {
-    "eslint": "9.30.1",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "5.2.0",
-    "prettier": "3.6.2",
-    "serve": "14.2.4"
+    "@vitejs/plugin-react": "^4.5.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "prettier": "^3.6.2",
+    "vite": "^6.3.5"
   },
   "overrides": {
-    "react-side-effect": {
-      "react": "19.1.0"
-    },
-    "nth-check": "^2.1.1",
-    "postcss": "^8.4.31",
-    "svgo": "^3.0.0",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
-    "webpack-dev-server": "^4.15.1"
-  },
-  "resolutions": {
-    "webpack-dev-server": "^4.15.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-helmet-async": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }

@@ -28,7 +28,7 @@ export const Footer = () => {
                             </a>
                         </div>
                         <p>Engineered with Code & Excellence.</p>
-                        <p>© 2025 Cameron Vandermeersch. All rights reserved.</p>
+                        <p>© 2026 Cameron Vandermeersch. All rights reserved.</p>
                     </Col>
                 </Row>
             </Container>
